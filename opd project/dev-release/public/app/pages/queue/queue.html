@@ -1,0 +1,30 @@
+<style>
+    .paper {
+        background: #fff;
+        box-shadow:
+            /* The top layer shadow */
+                0 -1px 1px rgba(0,0,0,0.15),
+                    /* The second layer */
+                0 -10px 0 -5px #eee,
+                    /* The second layer shadow */
+                0 -10px 1px -4px rgba(0,0,0,0.15),
+                    /* The third layer */
+                0 -20px 0 -10px #eee,
+                    /* The third layer shadow */
+                0 -20px 1px -9px rgba(0,0,0,0.15);
+        /* Padding for demo purposes */
+        padding: 30px;
+    }
+</style>
+<div class="row">
+    <div class="col-md-12 col-lg-6 col-lg-offset-3">
+        <div ba-panel ba-panel-title="Next Patient" ba-panel-class="xsmall-panel light-text">
+            <div>
+                <h2>{{patient.name}}</h2>
+                <h3>{{patient.hin}}</h3>
+            </div>
+            <div class="button-wrapper"><button type="button" class="btn btn-primary btn-lg" ng-click="visit()">Create Visit</button></div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,120 @@
+<div>
+    <h2>{{patient.firstName}}</h2>
+</div>
+<div class="box-body">
+    <br>
+    <form name="visitForm" ng-submit= "addVisit(patient._id,visit)" novalidate>
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="input-group"  ng-class="{ 'has-error' : visitForm.Injury.$invalid && !visitForm.Injury.$pristine }">
+
+                <span class="input-group-addon">Complaints/Injury *</span>
+                <input type="text" class="form-control" name="Injury" required ng-pattern="/^[a-zA-Z\s]*$/" ng-model="visit.complaint"/>
+
+            </div>
+            <p ng-show="visitForm.Injury.$invalid && !visitForm.Injury.$pristine" class="help-block">Invalid complaint .</p>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="input-group" >
+
+                <span class="input-group-addon">Visit Type *</span>
+                <select  class="form-control"  required ng-model="visit.visitType"  ng-options="x
+                for
+                 x in types"></select>
+            </div>
+
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="input-group"  ng-class="{ 'has-error' : visitForm.Remarks.$invalid && !visitForm.Remarks.$pristine }">
+
+                <span class="input-group-addon">Remarks</span>
+                <textarea type="text" class="form-control" id="inputRemarks" name="Remarks" placeholder="" ng-model="visit.remarks" ng-pattern="/^[A-Za-z0-9'\.\/\-\s\,]+$/">
+                            </textarea>
+            </div>
+            <p ng-show="visitForm.Remarks.$invalid && !visitForm.Remarks.$pristine" class="help-block">Invalid Remark .</p>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="input-group">
+
+                <span class="input-group-addon">Date</span> <input
+                    class="form-control" type="text" name="DateandTime" placeholder=""value="{{date | date:'yyyy-MM-dd'}} "   readonly/>
+            </div>
+        </div>
+    </div>
+    <br>
+  <!--  <div class="row">
+        <div class="col-xs-6">
+            <div class="input-group">
+
+                <span class="input-group-addon">Doctor</span><input
+                    class="form-control" type="text" id="inputDoctor" readonly
+                    name="Doctor" placeholder=""/>
+            </div>
+        </div>
+    </div> -->
+    <div>
+        <br/>
+    </div>
+
+    <br>
+
+
+    <br> <br>
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="input-group">
+                <button type="submit" class="btn btn-primary" style="margin-right: 16px" ng-disabled="visitForm.$invalid"  >Save</button>
+                &nbsp;
+                <button type="reset" class='btn' style="margin-right: 16px">Cancel</button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" ng-click="open('app/pages/visit/notify.modal.html',lg)">Notify</button>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>
+<!-- Notify Modal -->
+
+<!-- ENd of notify model-->
+<div class="row">
+    <div class="col-md-12">
+        <button class="btn btn-default pull-right" data-toggle="collapse" data-target="#collapseExample"
+                aria-controls="collapseExample">+
+        </button>
+    </div>
+</div>
+
+<div ba-panel ba-panel-class="with-scroll" aria-expanded="false">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Complaint</th>
+                <th>VisitType</th>
+                <th>Remarks</th>
+                <th>Date</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="visit in patient.visits">
+                <td>{{visit.complaint}}</td>
+                <td>{{visit.visitType}}</td>
+                <td> {{visit.remarks}}  </td>
+                <td>{{visit.date}}    </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,138 @@
+<form name="userForm" novalidate ng-submit="addPatient(npatient)">
+
+<div class="modal-example">
+    <div class="box-header with-border">
+        <h3 class="box-title">Patient Personal Details </h3>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-xs-3">
+            <div class="input-group">
+                <span class="input-group-addon">Title <span style="color:red">*</span></span>
+                <select class="form-control"  ng-required="required" ng-model="npatient.title" ng-options="x for x in titles"></select>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="input-group"  ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
+                <span class="input-group-addon">Name In Full <span style="color:red">*</span></span>
+                <input type="text" class="form-control"  name="name" ng-model="npatient.firstName"  ng-required="required" ng-pattern="/^[a-zA-Z\s]*$/"/>
+            </div>
+            <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block">Invalid Name.</p>
+        </div>
+        <div class="col-xs-4">
+            <div ng-controller="datepickerpopupCtrl">
+                <p class="input-group">
+                    <span class="input-group-addon">Date Of Birth <span style="color:red ">*</span></span>
+                    <input type="text" ng-required="required" ng-model="npatient.Birthday" class="form-control" uib-datepicker-popup="{{format}}" datepicker-options="options" is-open="opened"  close-text="Close" alt-input-formats="altInputFormats" show-button-bar="false" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-xs-3">
+            <div class="input-group">
+                <span class="input-group-addon">Gender <span style="color:red">*</span></span>
+                <select class="form-control"  ng-required="required" ng-model="npatient.Gender" ng-options="x for x in sex"></select>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="input-group">
+                <span class="input-group-addon">Civil Status <span style="color:red">*</span></span> <select
+                    class="form-control" ng-model="npatient.civilStatus"  ng-required="required" ng-options="x for x in cstatus"></select>
+            </div>
+        </div>
+      <!--  <div class="col-xs-3">
+            <div class="input-group">
+                <span class="input-group-addon">HIN <span style="color:red">*</span></span> <input
+                    type="text" class="form-control" required="required" ng-model="npatient.HIN"
+            />
+            </div>
+
+        </div>-->
+    </div>
+    <br>
+    <div class="box-header with-border">
+        <h3 class="box-title">Patient Identity Details</h3>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-xs-3">
+            <div class="input-group"   ng-class="{ 'has-error' : userForm.nic.$invalid && !userForm.nic.$pristine }">
+                <span class="input-group-addon">NIC <span ></span></span>
+                <input type="text" class="form-control" name="nic" ng-model="npatient.NIC"  ng-pattern="/^\d{9}(v|V)$/"/>
+            </div>
+            <p ng-show="userForm.nic.$invalid && !userForm.nic.$pristine" class="help-block">Invalid NIC.</p>
+        </div>
+        <div class="col-xs-3">
+            <div class="input-group">
+                <span class="input-group-addon">Blood Group <span ></span></span> <select
+                    class="form-control" ng-model="npatient.bloodGroup" ng-options="x
+                for
+                 x in bloodGroup"></select>
+            </div>
+
+        </div>
+
+        <br>
+        <br>
+        <br>
+
+    </div>
+    <br>
+    <div class="box-header with-border">
+        <h3 class="box-title">Patient Contact Details</h3>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="input-group"  ng-class="{ 'has-error' : userForm.address.$invalid && !userForm.address.$pristine }">
+                <span class="input-group-addon">Address <span style="color:red">*</span></span><input
+                    class="form-control" id="address" name="address"  ng-required="required" ng-model="npatient.Address"ng-pattern="/^[A-Za-z0-9'\.\/\-\s\,]+$/"
+                    />
+            </div>
+            <p ng-show="userForm.address.$invalid && !userForm.address.$pristine" class="help-block">Invalid Address.</p>
+        </div>
+        <div class="col-xs-3">
+            <div class="input-group"  ng-class="{ 'has-error' : userForm.telephone.$invalid && !userForm.telephone.$pristine }">
+                <span class="input-group-addon">Phone <span style="color:red"></span></span>
+                <input type="text" class="form-control" name="telephone" ng-model="npatient.phone" ng-pattern="/^\d{10}$/" />
+            </div>
+            <p ng-show="userForm.telephone.$invalid && !userForm.telephone.$pristine" class="help-block">Invalid Telephone number.</p>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="input-group" ng-class="{ 'has-error' : userForm.gaurdian.$invalid && !userForm.gaurdian.$pristine }">
+                <span class="input-group-addon">Guardian</span>
+                <input type="text" class="form-control" name="gaurdian" ng-model="npatient.Gardian"  ng-pattern="/^[a-zA-Z\s]*$/"/>
+            </div>
+            <p ng-show="userForm.gaurdian.$invalid && !userForm.gaurdian.$pristine" class="help-block">Invalid Name.</p>
+        </div>
+
+        <div class="col-xs-3">
+            <div class="input-group" ng-class="{ 'has-error' : userForm.gtel.$invalid && !userForm.gtel.$pristine }">
+                <span class="input-group-addon">Guardian Tel</span>
+                <input type="text" class="form-control"  name="gtel" ng-model="npatient.GaurdianTel"  ng-pattern="/^\d{10}$/"/>
+            </div>
+            <p ng-show="userForm.gtel.$invalid && !userForm.gtel.$pristine" class="help-block">Invalid Telephone number.</p>
+        </div>
+
+    </div>
+
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col-xs-3">
+            <div class="input-group">
+                <button type="submit" id="btnsubmit" class="btn btn-primary"  ng-disabled="userForm.$invalid" >Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>

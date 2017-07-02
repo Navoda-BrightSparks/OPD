@@ -1,0 +1,60 @@
+<div class="row" ng-controller="lastVisitController">
+    <div>
+
+    </div>
+    <uib-tabset active="$tabSetStatus.activeTab">
+        <uib-tab heading="Examination">
+            <div>
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <td>Weight</td>
+                        <td>{{lastVisit.examination.weight}}</td>
+                    </tr>
+                    <tr>
+                        <td>Height</td>
+                        <td>{{lastVisit.examination.height}}</td>
+                    </tr>
+                    <tr>
+                        <td>systolic BP</td>
+                        <td>{{lastVisit.examination.sBP}}</td>
+                    </tr>
+                    <tr>
+                        <td>Diastolic BP</td>
+                        <td>{{lastVisit.examination.dBP}}</td>
+                    </tr>
+                    <tr>
+                        <td>Temperature</td>
+                        <td>{{lastVisit.examination.temperature}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </uib-tab>
+        <uib-tab heading="Lab Orders">
+
+        </uib-tab>
+        <uib-tab heading="Injections">
+
+        </uib-tab>
+        <uib-tab heading="Treatments">
+
+        </uib-tab>
+        <uib-tab heading="Prescription">
+            <table class="table">
+                <thead>
+                    <th>Drug Name</th>
+                    <th>Frequency</th>
+                    <th>Period</th>
+                </thead>
+                <tbody>
+                <tr ng-repeat="x in lastVisit.prescription[0]" >
+                    <td>{{x.drugname}}</td>
+                    <td>{{x.frequency}}</td>
+                    <td>{{x.Period}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </uib-tab>
+    </uib-tabset>
+</div>

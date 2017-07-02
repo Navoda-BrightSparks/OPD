@@ -1,0 +1,33 @@
+<div class="modal-content" ng-controller="pDashboardController">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Allergies</h4>
+    </div>
+    <div class="modal-body">
+                        <div ng-if="!hasAllergies">
+                            <span>No Allerigies recorded</span>
+                        </div>
+                        <div class="row" ng-if="hasAllergies">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Allergy</th>
+                                    <th>Remarks</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="x in patient.Alergies">
+                                    <td>{{x.alergy}}</td>
+                                    <td>{{x.remarks}}</td>
+
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="$dismiss()">Close</button>
+    </div>
+</div>

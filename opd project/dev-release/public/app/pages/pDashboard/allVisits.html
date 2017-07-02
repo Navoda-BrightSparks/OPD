@@ -1,0 +1,21 @@
+<div ng-controller="allVisitController">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Complaint</th>
+                <th>VisitType</th>
+                <th>Remarks</th>
+                <th>Date</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="visit in allVisits.visits">
+                <td>{{visit.complaint}}</td>
+                <td>{{visit.visitType}}</td>
+                <td> {{visit.remarks}}  </td>
+                <td>{{visit.date}}    </td>
+            </tr>
+            </tbody>
+        </table>
+</div>

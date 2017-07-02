@@ -1,0 +1,53 @@
+<!--<div class="form-group">
+    <input type="text" class="form-control input-lg" id="input4" placeholder="HIN"><td>
+    <button class="btn btn-primary" ng-click="">Search</button></td>
+</div>-->
+<div class="row">
+    <br/>
+    <div class="col-md-2">
+        <input type="text" class="form-control" placeholder="Search HIN" ng-model="HIN">
+    </div>
+
+    <div class="col-md-2">
+        <button class="btn btn-primary " ng-click="Search(HIN)">Search</button>
+    </div>
+
+    <div class="col-md-2">
+        <input type="text" class="form-control" placeholder="Search NIC" ng-model="NIC">
+    </div>
+
+    <div class="col-md-2">
+        <button class="btn btn-primary " ng-click="SearchNIC(NIC)">Search</button>
+    </div>
+
+</div>
+<div class="row">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>HIN</th>
+            <th>First name</th>
+            <th>NIC</th>
+            <th>Telephone</th>
+            <th>Birthday</th>
+            <th>Address</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="x in patients">
+            <td>{{x.HIN}}</td>
+            <td ng-click="goDash(x.HIN)">{{x.firstName}}</td>
+            <td>{{x.NIC}}</td>
+            <td>{{x.phone}}</td>
+            <td>{{x.Birthday.slice(0,10)}}</td>
+            <td>{{x.Address}}</td>
+          <!--  <td><button class="button" ng-click="newVisit(x._id)">Create Visit</button></td>-->
+            <td><button class="btn btn-primary" ng-click="addAllergy(x._id)">Alergies</button></td>
+            <td><button class="btn btn-primary" ng-click="addToQueue(x)">queue</button></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
